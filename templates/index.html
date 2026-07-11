@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="mb-4">Dashboard</h2>
+  <p class="text-muted">A simple overview of the library activities.</p>
+
+  <div class="row g-4">
+    <div class="col-md-6 col-xl-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h6>Total Books</h6>
+        <h2>{{ total_books }}</h2>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h6>Issued Books</h6>
+        <h2>{{ issued_books }}</h2>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h6>Available Books</h6>
+        <h2>{{ available_books }}</h2>
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+      <div class="card shadow-sm border-0 p-3">
+        <h6>Total Members</h6>
+        <h2>{{ total_members }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-2">
+    <div class="col-lg-6">
+      <div class="card shadow-sm border-0 p-4">
+        <h5>Availability Statistics</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Average available: {{ available_stats.average | round(2) }}</li>
+          <li class="list-group-item">Maximum available: {{ available_stats.maximum }}</li>
+          <li class="list-group-item">Minimum available: {{ available_stats.minimum }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm border-0 p-4">
+        <h5>Quick Notes</h5>
+        <p class="mb-0">Use the sidebar to manage books, members, issue/return records, and reports.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

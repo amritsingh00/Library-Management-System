@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="mb-4">Reports</h2>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card shadow-sm p-3">
+        <h5>Bar Chart</h5>
+        <img src="{{ url_for('static', filename='charts/' + chart_bar) }}" class="img-fluid" alt="Bar chart" />
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm p-3">
+        <h5>Pie Chart</h5>
+        <img src="{{ url_for('static', filename='charts/' + chart_pie) }}" class="img-fluid" alt="Pie chart" />
+      </div>
+    </div>
+  </div>
+{% endblock %}

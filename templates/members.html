@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="mb-4">Members</h2>
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5>Add New Member</h5>
+      <form method="post" class="row g-3">
+        <div class="col-md-4">
+          <input class="form-control" name="name" placeholder="Full Name" required />
+        </div>
+        <div class="col-md-4">
+          <input class="form-control" name="email" placeholder="Email" required />
+        </div>
+        <div class="col-md-3">
+          <input class="form-control" name="phone" placeholder="Phone" required />
+        </div>
+        <div class="col-md-1">
+          <button class="btn btn-primary w-100">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for member in members %}
+              <tr>
+                <td>{{ member.id }}</td>
+                <td>{{ member.name }}</td>
+                <td>{{ member.email }}</td>
+                <td>{{ member.phone }}</td>
+                <td>
+                  <form method="post" action="{{ url_for('delete_member', member_id=member.id) }}" class="d-inline">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% else %}
+              <tr><td colspan="5" class="text-center">No members found.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

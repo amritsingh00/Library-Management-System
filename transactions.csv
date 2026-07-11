@@ -1,0 +1,3 @@
+id,member_id,book_id,member_name,book_title,issue_date,return_date,status
+1,1,1,Alice Johnson,Python Basics,2026-07-01,2026-07-11,Returned
+2,4,4,Amrit Singh,RICH DAD,2026-07-11,,Issued

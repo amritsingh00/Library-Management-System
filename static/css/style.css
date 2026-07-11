@@ -1,0 +1,37 @@
+body {
+  background: #f5f7fb;
+  font-family: Arial, sans-serif;
+}
+
+#wrapper {
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 230px;
+  min-height: 100vh;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.15);
+  border-radius: 6px;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.content-area {
+  background: #f5f7fb;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  #wrapper {
+    flex-direction: column;
+  }
+}

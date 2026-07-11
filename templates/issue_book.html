@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="mb-4">Issue Book</h2>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form method="post" class="row g-3">
+        <div class="col-md-5">
+          <label class="form-label">Select Member</label>
+          <select class="form-select" name="member_id" required>
+            <option value="">Choose a member</option>
+            {% for member in members %}
+              <option value="{{ member.id }}">{{ member.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-5">
+          <label class="form-label">Select Book</label>
+          <select class="form-select" name="book_id" required>
+            <option value="">Choose a book</option>
+            {% for book in books %}
+              <option value="{{ book.id }}">{{ book.title }} (Available: {{ book.available }})</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-primary w-100">Issue Book</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Books</h2>
+  </div>
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5>Add New Book</h5>
+      <form method="post">
+        <input type="hidden" name="action" value="add" />
+        <div class="row g-3">
+          <div class="col-md-3">
+            <input class="form-control" name="title" placeholder="Title" required />
+          </div>
+          <div class="col-md-3">
+            <input class="form-control" name="author" placeholder="Author" required />
+          </div>
+          <div class="col-md-2">
+            <input class="form-control" name="category" placeholder="Category" required />
+          </div>
+          <div class="col-md-2">
+            <input class="form-control" type="number" name="quantity" placeholder="Quantity" min="1" required />
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary w-100">Add Book</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form class="row g-3 mb-3" method="get">
+        <div class="col-md-10">
+          <input class="form-control" name="search" value="{{ search_query }}" placeholder="Search by title or author" />
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-outline-secondary w-100">Search</button>
+        </div>
+      </form>
+
+      <div class="table-responsive">
+        <table class="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Category</th>
+              <th>Quantity</th>
+              <th>Available</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for book in books %}
+              <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{ book.quantity }}</td>
+                <td>{{ book.available }}</td>
+                <td>
+                  <form method="post" action="{{ url_for('delete_book', book_id=book.id) }}" class="d-inline">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% else %}
+              <tr><td colspan="7" class="text-center">No books found.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}

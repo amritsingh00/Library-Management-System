@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2 class="mb-4">Return Book</h2>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form method="post" class="row g-3">
+        <div class="col-md-10">
+          <label class="form-label">Select Issued Book</label>
+          <select class="form-select" name="transaction_id" required>
+            <option value="">Choose a transaction</option>
+            {% for transaction in transactions %}
+              <option value="{{ transaction.id }}">{{ transaction.member_name }} - {{ transaction.book_title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-success w-100">Return Book</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
